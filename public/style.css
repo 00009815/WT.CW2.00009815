@@ -1,0 +1,69 @@
+:root{
+	font-size: 18px; 
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    color: #800020;
+}
+
+body{
+    display: flex;
+}
+
+.main{
+    margin-left: 10%;
+    width: 90%;
+    text-align: center;
+}
+
+/*navigation bar*/
+nav{
+    height: 100%;
+    width: 10%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(231, 231, 231);
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+.nav-element{
+    font-size: 1.5rem;
+    margin-bottom: 2vh;
+}
+.logo{
+    font-size: 1.8rem;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+    border-bottom: 2px solid #cccc;
+}
+
+/*main page*/
+.about{
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30vh;
+    margin-bottom: 50px;
+}
+.create-task{
+    padding: 16px;
+    background-color: #800020;
+    color: #fff;
+    font-size: 1.5rem;
+}
+.create-task:hover{
+    background-color: #cccc;
+}
