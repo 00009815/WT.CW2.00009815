@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
     res.render('main');
 });
 
+app.get('/tasks/create', (req, res) => {
+    res.render('create-task');
+});
+
 app.listen('8000', (error) => {
     if (error) throw error;
 

@@ -1,0 +1,14 @@
+extends layout.pug 
+
+block content 
+    main.main 
+        div.create-wrapper
+            h1.create-title Create new task
+            form.form(method='POST' action='/tasks/create')
+                label.label Title:
+                input.input(type='text' name='title' size="15")
+
+                label.label Description: 
+                textarea.input(type='text' name='description' rows='6' cols='40')
+
+                button.crt-btn Create task
