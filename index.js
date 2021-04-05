@@ -106,6 +106,46 @@ app.get("/tasks/:id/archive", (req, res) => {
 	})
   })
 
+  app.get("/tasks/:id/proceed", (req, res) => {
+	fs.readFile('./database/tasks.json', (err, data) => {
+	  if (err) throw err
+  
+	  const tasks = JSON.parse(data)
+	  const task = tasks.filter(task => task.id == req.params.id)[0]
+	  const taskIdx = tasks.indexOf(task)
+	  const splicedTask = tasks.splice(taskIdx, 1)[0]
+	  splicedTask.status += 1
+	  tasks.push(splicedTask)
+  
+	  fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
+		if (err) throw err
+  
+		renderTasks(res, tasks)
+	  })
+	  
+	})
+  })
+
+  app.get("/tasks/:id/back", (req, res) => {
+	fs.readFile('./database/tasks.json', (err, data) => {
+	  if (err) throw err
+  
+	  const tasks = JSON.parse(data)
+	  const task = tasks.filter(task => task.id == req.params.id)[0]
+	  const taskIdx = tasks.indexOf(task)
+	  const splicedTask = tasks.splice(taskIdx, 1)[0]
+	  splicedTask.status -= 1
+	  tasks.push(splicedTask)
+  
+	  fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
+		if (err) throw err
+  
+		renderTasks(res, tasks)
+	  })
+	  
+	})
+  })
+
 app.listen('8000', (error) => {
     if (error) throw error;
 

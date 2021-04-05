@@ -10,7 +10,8 @@ block content
                         .task-body
                             a.task-title(href=`/tasks/${task.id}`) #{task.title}
                             p.task-description #{task.description}
-                        .task-controls    
+                        .task-controls
+                            a(href=`/tasks/${task.id}/proceed`) Proceed     
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
                             a(href=`/tasks/${task.id}/archive`) Archive
 
@@ -22,6 +23,8 @@ block content
                             a.task-title(href=`/tasks/${task.id}`) #{task.title}
                             p.task-description #{task.description}
                         .task-controls    
+                            a(href=`/tasks/${task.id}/back`) Back
+                            a(href=`/tasks/${task.id}/proceed`) Proceed
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
                             a(href=`/tasks/${task.id}/archive`) Archive
 
@@ -33,5 +36,6 @@ block content
                             a.task-title(href=`/tasks/${task.id}`) #{task.title}
                             p.task-description #{task.description}
                         .task-controls    
+                            a(href=`/tasks/${task.id}/back`) Back
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
                             a(href=`/tasks/${task.id}/archive`) Archive
