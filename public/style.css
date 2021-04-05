@@ -146,3 +146,7 @@ nav{
 .task-description{
     margin-top: 10px;
 }
+.task-controls{
+    display: flex;
+    justify-content: space-evenly;
+}

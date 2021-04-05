@@ -40,7 +40,8 @@ app.post('/tasks/create', (req, res) => {
                 id: id(),
 				title: title,
 				description: description,
-				status: status.toDo
+				status: status.toDo,
+				archive: false
 			})
 
 			fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
@@ -59,16 +60,51 @@ app.get('/tasks', (req, res) => {
 		if(err) throw err
 
 		const tasks = JSON.parse(data)
+		
 
-		const toDoTasks = tasks.filter(task => task.status == status.toDo)
-		const doingTasks = tasks.filter(task => task.status == status.doing)
-		const doneTasks = tasks.filter(task => task.status == status.done)
-
-		res.render('tasks', { tsToDo: toDoTasks, tsDoing: doingTasks, tsDone: doneTasks })
+		renderTasks(res, tasks)
 	})
 	
 
 })
+
+app.get('/tasks/:id/delete', (req, res) => {
+	const id = req.params.id;
+
+	fs.readFile('./database/tasks.json', (err, data) => {
+		if (err) throw err
+
+		const tasks = JSON.parse(data);
+
+		const filteredTasks = tasks.filter(task => task.id != id)
+
+		fs.writeFile('./database/tasks.json', JSON.stringify(filteredTasks), (err) => {
+			if (err) throw err
+
+			renderTasks(res, filteredTasks)
+		})
+	})
+})
+
+app.get("/tasks/:id/archive", (req, res) => {
+	fs.readFile('./database/tasks.json', (err, data) => {
+	  if (err) throw err
+  
+	  const tasks = JSON.parse(data)
+	  const task = tasks.filter(task => task.id == req.params.id)[0]
+	  const taskIdx = tasks.indexOf(task)
+	  const splicedTask = tasks.splice(taskIdx, 1)[0]
+	  splicedTask.archive = true
+	  tasks.push(splicedTask)
+  
+	  fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
+		if (err) throw err
+  
+		renderTasks(res, tasks)
+	  })
+	  
+	})
+  })
 
 app.listen('8000', (error) => {
     if (error) throw error;
@@ -79,3 +115,14 @@ app.listen('8000', (error) => {
 function id () {
     return '_' + Math.random().toString(36).substr(2, 9);
   };
+
+function renderTasks(res, tasks) {
+
+		const notArchivedTasks = tasks.filter(task => task.archive != true)
+
+		const toDoTasks = notArchivedTasks.filter(task => task.status == status.toDo)
+		const doingTasks = notArchivedTasks.filter(task => task.status == status.doing)
+		const doneTasks = notArchivedTasks.filter(task => task.status == status.done)
+
+		res.render('tasks', { tsToDo: toDoTasks, tsDoing: doingTasks, tsDone: doneTasks })
+}

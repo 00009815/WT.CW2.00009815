@@ -12,6 +12,7 @@ block content
                             p.task-description #{task.description}
                         .task-controls    
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                            a(href=`/tasks/${task.id}/archive`) Archive
 
             .tasks-container
                 h2.tasks-title Doing:
@@ -22,6 +23,7 @@ block content
                             p.task-description #{task.description}
                         .task-controls    
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                            a(href=`/tasks/${task.id}/archive`) Archive
 
             .tasks-container
                 h2.tasks-title Done:
@@ -32,3 +34,4 @@ block content
                             p.task-description #{task.description}
                         .task-controls    
                             a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                            a(href=`/tasks/${task.id}/archive`) Archive
