@@ -15,9 +15,6 @@ app.get('/tasks/create', (req, res) => {
     res.render('create-task');
 });
 
-app.get('/tasks', (req, res) =>{
-    res.render('tasks');
-});
 
 app.post('/tasks/create', (req, res) => {
 	const title = req.body.title

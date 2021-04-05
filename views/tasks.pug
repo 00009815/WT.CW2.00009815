@@ -7,9 +7,11 @@ block content
                 h2.tasks-title To do:
                 each task in tasks
                     div.task-wrapper
-                        a(href=`/tasks/${task.id}`) #{task.title}
-                        p #{task.description}
-                        a.delete(href=`/tasks/${task.id}/delete`) Delete
+                        .task-body
+                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                            p.task-description #{task.description}
+                        .task-controls    
+                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
 
             .tasks-container
                 h2.tasks-title Doing:
