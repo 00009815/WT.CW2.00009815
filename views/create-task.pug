@@ -4,6 +4,13 @@ block content
     main.main 
         div.create-wrapper
             h1.create-title Create new task
+
+            if error
+                p.error Error occured. Try again.
+
+            if success
+                p.success Note is saved.
+
             form.form(method='POST' action='/tasks/create')
                 label.label Title:
                 input.input(type='text' name='title' size="15")
