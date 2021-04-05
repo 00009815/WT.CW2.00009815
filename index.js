@@ -16,9 +16,17 @@ app.get('/tasks/create', (req, res) => {
 });
 
 
+const status = {
+	toDo: 0,
+	doing: 1,
+	done: 2
+}
+
 app.post('/tasks/create', (req, res) => {
 	const title = req.body.title
 	const description = req.body.description
+
+	
 
 	if(title.trim() == '' && description.trim() == '') {
 		res.render('create-task', {error: true})
@@ -31,7 +39,8 @@ app.post('/tasks/create', (req, res) => {
 			tasks.push({
                 id: id(),
 				title: title,
-				description: description
+				description: description,
+				status: status.toDo
 			})
 
 			fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
@@ -51,7 +60,11 @@ app.get('/tasks', (req, res) => {
 
 		const tasks = JSON.parse(data)
 
-		res.render('tasks', { tasks: tasks })
+		const toDoTasks = tasks.filter(task => task.status == status.toDo)
+		const doingTasks = tasks.filter(task => task.status == status.doing)
+		const doneTasks = tasks.filter(task => task.status == status.done)
+
+		res.render('tasks', { tsToDo: toDoTasks, tsDoing: doingTasks, tsDone: doneTasks })
 	})
 	
 

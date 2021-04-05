@@ -5,7 +5,7 @@ block content
         .tasks-wrapper
             .tasks-container 
                 h2.tasks-title To do:
-                each task in tasks
+                each task in tsToDo
                     div.task-wrapper
                         .task-body
                             a.task-title(href=`/tasks/${task.id}`) #{task.title}
@@ -15,8 +15,20 @@ block content
 
             .tasks-container
                 h2.tasks-title Doing:
-                p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione repellendus, harum unde assumenda consequatur odit voluptas enim? Iste, doloribus maiores.
+                each task in tsDoing
+                    div.task-wrapper
+                        .task-body
+                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                            p.task-description #{task.description}
+                        .task-controls    
+                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
 
             .tasks-container
                 h2.tasks-title Done:
-                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum minus fuga illum quae, iure dicta quos repudiandae! Tempora, vitae?
+                each task in tsDone
+                    div.task-wrapper
+                        .task-body
+                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                            p.task-description #{task.description}
+                        .task-controls    
+                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
