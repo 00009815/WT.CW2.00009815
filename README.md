@@ -23,3 +23,6 @@ node index.js
 
 ### Link to the Github repository:
 [Link to the repository](https://github.com/00009815/WT.CW2.00009815)
+
+### Link to the Glitch hosting:
+[Link to Glitch](https://tasklist-00009815.glitch.me/)
