@@ -154,6 +154,10 @@ nav{
     display: flex;
     justify-content: space-evenly;
 }
+.empty-tasks{
+    font-size: 2rem;
+    text-align: center;
+}
 
 /*archive page*/
 .archive-list{
@@ -166,4 +170,8 @@ nav{
 .archive-title{
     display: flex;
     justify-content: space-between;
+}
+.empty-archive{
+    font-size: 2rem;
+    text-align: center;
 }

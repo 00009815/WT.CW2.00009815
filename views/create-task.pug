@@ -6,10 +6,10 @@ block content
             h1.create-title Create new task
 
             if error
-                p.error Error occured. Try again.
+                p.error Fill all input boxes.
 
             if success
-                p.success Note is saved.
+                p.success Task is saved.
 
             form.form(method='POST' action='/tasks/create')
                 label.label Title:

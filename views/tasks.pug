@@ -3,39 +3,48 @@ extends layout.pug
 block content 
     main.main 
         .tasks-wrapper
-            .tasks-container 
+            .tasks-container
                 h2.tasks-title To do:
-                each task in tsToDo
-                    div.task-wrapper
-                        .task-body
-                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
-                            p.task-description #{task.description}
-                        .task-controls
-                            a(href=`/tasks/${task.id}/proceed`) Proceed     
-                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                            a(href=`/tasks/${task.id}/archive`) Archive
+                if tsToDo.length 
+                    each task in tsToDo
+                        div.task-wrapper
+                            .task-body
+                                a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                                p.task-description #{task.description}
+                            .task-controls
+                                a(href=`/tasks/${task.id}/proceed`) Proceed     
+                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                                a(href=`/tasks/${task.id}/archive`) Archive
+                else   
+                    p.empty-tasks No tasks here
 
             .tasks-container
                 h2.tasks-title Doing:
-                each task in tsDoing
-                    div.task-wrapper
-                        .task-body
-                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
-                            p.task-description #{task.description}
-                        .task-controls    
-                            a(href=`/tasks/${task.id}/back`) Back
-                            a(href=`/tasks/${task.id}/proceed`) Proceed
-                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                            a(href=`/tasks/${task.id}/archive`) Archive
+                if tsDoing.length
+                    each task in tsDoing
+                        div.task-wrapper
+                            .task-body
+                                a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                                p.task-description #{task.description}
+                            .task-controls    
+                                a(href=`/tasks/${task.id}/back`) Back
+                                a(href=`/tasks/${task.id}/proceed`) Proceed
+                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                                a(href=`/tasks/${task.id}/archive`) Archive
+                else 
+                    p.empty-tasks No tasks here
 
             .tasks-container
                 h2.tasks-title Done:
-                each task in tsDone
-                    div.task-wrapper
-                        .task-body
-                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
-                            p.task-description #{task.description}
-                        .task-controls    
-                            a(href=`/tasks/${task.id}/back`) Back
-                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                            a(href=`/tasks/${task.id}/archive`) Archive
+                if tsDone.length
+                    each task in tsDone
+                        div.task-wrapper
+                            .task-body
+                                a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                                p.task-description #{task.description}
+                            .task-controls    
+                                a(href=`/tasks/${task.id}/back`) Back
+                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                                a(href=`/tasks/${task.id}/archive`) Archive
+                else 
+                    p.empty-tasks No tasks here

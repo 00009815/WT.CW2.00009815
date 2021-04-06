@@ -2,15 +2,18 @@ extends layout.pug
 
 block content
     main.main
-        .archive-list 
-            each task in archive 
-                div.task-wrapper
-                    .task-body
-                        .archive-title
-                            a.task-title(href=`/tasks/${task.id}`) #{task.title}
-                            span.stage Archived at stage: 
-                                span(style="font-weight: bold") #{stages[task.status]}
-                        p.task-description #{task.description}
-                    .task-controls    
-                        a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                        a(href=`/tasks/${task.id}/unarchive`) Unarchive
+        .archive-list
+            if archive.length 
+                each task in archive 
+                    div.task-wrapper
+                        .task-body
+                            .archive-title
+                                a.task-title(href=`/tasks/${task.id}`) #{task.title}
+                                span.stage Archived at stage: 
+                                    span(style="font-weight: bold") #{stages[task.status]}
+                            p.task-description #{task.description}
+                        .task-controls    
+                            a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
+                            a(href=`/tasks/${task.id}/unarchive`) Unarchive
+            else
+                p.empty-archive No tasks yet

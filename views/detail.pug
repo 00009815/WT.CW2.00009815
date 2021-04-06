@@ -1,0 +1,9 @@
+extends layout.pug 
+
+block content
+    main.main
+        .detail-wrapper
+            h2.detail-title #{task.title}
+            span.detail-stage Archived at stage: 
+                span(style="font-weight: bold") #{stages[task.status]}
+            p.detail-desc #{task.description}
