@@ -109,6 +109,24 @@ nav{
     background-color: #ccc;
     color: #800020;
 }
+.error{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 10px;
+	border: 1px solid red;
+	color: red;
+	font-size: 1.3rem;
+}
+.success{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 10px;
+	border: 1px solid green;
+	color: green;
+	font-size: 1.3rem;
+}
 
 /*tasks page*/
 .tasks-wrapper{
