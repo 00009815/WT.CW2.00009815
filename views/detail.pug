@@ -3,7 +3,19 @@ extends layout.pug
 block content
     main.main
         .detail-wrapper
-            h2.detail-title #{task.title}
-            span.detail-stage Archived at stage: 
-                span(style="font-weight: bold") #{stages[task.status]}
+            .detail-title-box
+                h2.detail-title #{task.title}
+                if task.archive
+                    span.detail-stage Archived at stage: 
+                        span(style="font-weight: bold") #{stages[task.status]}
+                else 
+                    span.detail-stage At stage: 
+                        span(style="font-weight: bold") #{stages[task.status]}
             p.detail-desc #{task.description}
+
+            .detail-controls
+                a(href=`/tasks/${task.id}/delete` class="detail-btn")  Delete
+                if task.archive     
+                    a(href=`/tasks/${task.id}/unarchive` class="detail-btn") Unarchive
+                else    
+                    a(href=`/tasks/${task.id}/archive` class="detail-btn") Archive

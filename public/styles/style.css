@@ -175,3 +175,33 @@ nav{
     font-size: 2rem;
     text-align: center;
 }
+
+/*detail page*/
+.detail-wrapper{
+    height: 100vh;
+    width: 60vw;
+    margin: auto;
+    padding-top: 10vh;
+}
+.detail-title-box{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid #800020;
+    margin-bottom: 2vh;  
+}
+.detail-controls{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3vh;
+
+}
+.detail-btn{
+    padding: 5px 10px;
+    background-color: #800020;
+    color: #fff;
+    margin: 0 5px;
+}
+.detail-btn:hover{
+    background-color: #ccc;
+}
