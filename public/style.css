@@ -150,3 +150,19 @@ nav{
     display: flex;
     justify-content: space-evenly;
 }
+
+/*archive page*/
+.archive-list{
+    min-height: 80vh;
+    width: 50vw;
+    padding-top: 10vh;
+    margin: auto;
+
+}
+.stage{
+    
+}
+.archive-title{
+    display: flex;
+    justify-content: space-between;
+}

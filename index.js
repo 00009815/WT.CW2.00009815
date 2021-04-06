@@ -68,6 +68,20 @@ app.get('/tasks', (req, res) => {
 
 })
 
+app.get('/tasks/archive', (req, res) => {
+
+	fs.readFile('./database/tasks.json', (err, data) => {
+		if(err) throw err
+
+		const tasks = JSON.parse(data)
+		
+		renderArchive(res, tasks)
+		
+	})
+	
+
+})
+
 app.get('/tasks/:id/delete', (req, res) => {
 	const id = req.params.id;
 
@@ -101,6 +115,26 @@ app.get("/tasks/:id/archive", (req, res) => {
 		if (err) throw err
   
 		renderTasks(res, tasks)
+	  })
+	  
+	})
+  })
+
+  app.get("/tasks/:id/unarchive", (req, res) => {
+	fs.readFile('./database/tasks.json', (err, data) => {
+	  if (err) throw err
+  
+	  const tasks = JSON.parse(data)
+	  const task = tasks.filter(task => task.id == req.params.id)[0]
+	  const taskIdx = tasks.indexOf(task)
+	  const splicedTask = tasks.splice(taskIdx, 1)[0]
+	  splicedTask.archive = false
+	  tasks.push(splicedTask)
+  
+	  fs.writeFile('./database/tasks.json', JSON.stringify(tasks), err => {
+		if (err) throw err
+  
+		renderArchive(res, tasks)
 	  })
 	  
 	})
@@ -158,11 +192,21 @@ function id () {
 
 function renderTasks(res, tasks) {
 
-		const notArchivedTasks = tasks.filter(task => task.archive != true)
+	const notArchivedTasks = tasks.filter(task => task.archive != true)
 
-		const toDoTasks = notArchivedTasks.filter(task => task.status == status.toDo)
-		const doingTasks = notArchivedTasks.filter(task => task.status == status.doing)
-		const doneTasks = notArchivedTasks.filter(task => task.status == status.done)
+	const toDoTasks = notArchivedTasks.filter(task => task.status == status.toDo)
+	const doingTasks = notArchivedTasks.filter(task => task.status == status.doing)
+	const doneTasks = notArchivedTasks.filter(task => task.status == status.done)
 
-		res.render('tasks', { tsToDo: toDoTasks, tsDoing: doingTasks, tsDone: doneTasks })
+	res.render('tasks', { tsToDo: toDoTasks, tsDoing: doingTasks, tsDone: doneTasks })
+}
+function renderArchive(res, tasks){
+	const archivedTasks = tasks.filter(task => task.archive == true)
+
+		const stages = {
+			0: "To do",
+			1: "Doing",
+			2: "Done"
+		}
+		res.render('archive', {archive: archivedTasks, stages: stages})
 }
