@@ -15,6 +15,16 @@ app.get('/', (req, res) => {
     res.render('main');
 });
 
+app.get('/api/v1/tasks', (req, res) => {
+	fs.readFile('./database/tasks.json', (err, data) => {
+		if(err) throw err
+
+		const tasks = JSON.parse(data)
+
+		res.json(tasks)
+	})
+})
+
 app.listen('8000', (error) => {
     if (error) throw error;
 

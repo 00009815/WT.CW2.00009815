@@ -12,9 +12,9 @@ block content
                                 a.task-title(href=`/tasks/${task.id}`) #{task.title}
                                 p.task-description #{task.description}
                             .task-controls
-                                a(href=`/tasks/${task.id}/proceed`) Proceed     
-                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                                a(href=`/tasks/${task.id}/archive`) Archive
+                                a(href=`/tasks/${task.id}/proceed` class="task-contr-btn") Proceed     
+                                a.delete-btn(href=`/tasks/${task.id}/delete` class="task-contr-btn") Delete
+                                a(href=`/tasks/${task.id}/archive` class="task-contr-btn") Archive
                 else   
                     p.empty-tasks No tasks here
 
@@ -27,10 +27,10 @@ block content
                                 a.task-title(href=`/tasks/${task.id}`) #{task.title}
                                 p.task-description #{task.description}
                             .task-controls    
-                                a(href=`/tasks/${task.id}/back`) Back
-                                a(href=`/tasks/${task.id}/proceed`) Proceed
-                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                                a(href=`/tasks/${task.id}/archive`) Archive
+                                a(href=`/tasks/${task.id}/back` class="task-contr-btn") Back
+                                a(href=`/tasks/${task.id}/proceed` class="task-contr-btn") Proceed
+                                a.delete-btn(href=`/tasks/${task.id}/delete` class="task-contr-btn") Delete
+                                a(href=`/tasks/${task.id}/archive` class="task-contr-btn") Archive
                 else 
                     p.empty-tasks No tasks here
 
@@ -43,8 +43,8 @@ block content
                                 a.task-title(href=`/tasks/${task.id}`) #{task.title}
                                 p.task-description #{task.description}
                             .task-controls    
-                                a(href=`/tasks/${task.id}/back`) Back
-                                a.delete-btn(href=`/tasks/${task.id}/delete`) Delete
-                                a(href=`/tasks/${task.id}/archive`) Archive
+                                a(href=`/tasks/${task.id}/back` class="task-contr-btn") Back
+                                a.delete-btn(href=`/tasks/${task.id}/delete` class="task-contr-btn") Delete
+                                a(href=`/tasks/${task.id}/archive` class="task-contr-btn") Archive
                 else 
                     p.empty-tasks No tasks here
